@@ -1,0 +1,64 @@
+﻿<Window x:Class="WpfTest.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        xmlns:s="clr-namespace:System;assembly=mscorlib"
+        Title="Test Window" Height="350" Width="525" FontSize="{Binding FontSize}">
+    <Grid>
+        <!--  
+        <Viewbox>
+        </Viewbox>
+        -->
+        <StackPanel Orientation="Vertical">
+            
+            <StackPanel Orientation="Horizontal">
+                <Label>Font Size</Label>
+                <Button Click="BtnFontSizeUp" Width="50">^</Button>
+                <Label Content="{Binding FontSize}"/>
+                <Button Click="BtnFontSizeDown" Width="50">v</Button>
+            </StackPanel>
+            
+            
+            
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+            
+            <Label Grid.Row="0" Grid.Column="0">Phone Number</Label>
+            <xctk:MaskedTextBox Grid.Row="0" Grid.Column="1" Mask="000-000-0000" Value="{Binding HomePhone}" ValueDataType="{x:Type s:String}" IncludeLiteralsInValue="False" InsertKeyMode="Overwrite" PromptChar="?"  HorizontalAlignment="Left" />
+            <Border Grid.Row="0" Grid.Column="2" BorderBrush="#FF9C3939" BorderThickness="1">
+                <TextBlock Text="{Binding HomePhone, Mode=OneWay}" Background="LightGray" />
+            </Border>
+                
+            <Label Grid.Row="1" Grid.Column="0">SSN</Label>
+            <xctk:MaskedTextBox Grid.Row="1" Grid.Column="1" Mask="000-00-0000" Value="{Binding SSN}" ValueDataType="{x:Type s:String}" IncludeLiteralsInValue="False" InsertKeyMode="Overwrite" PromptChar="_"  HorizontalAlignment="Left" />
+            <Border Grid.Row="1" Grid.Column="2" BorderBrush="#FF9C3939" BorderThickness="1">
+                <TextBlock Text="{Binding SSN, Mode=OneWay}" Background="LightGray" />
+            </Border>
+                
+            <Label Grid.Row="2" Grid.Column="0">Decimal Value</Label>
+            <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding DecimalValue}" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+            
+            <Label Grid.Row="3" Grid.Column="0">Decimal Up Down</Label>
+            <xctk:DecimalUpDown Grid.Row="3" Grid.Column="1" Value="{Binding DecimalValueUpDown}" ShowButtonSpinner="False"/>
+                
+            </Grid>
+            
+            <StackPanel Orientation="Horizontal">
+                <Button Name="btnClear" Content="Clear" HorizontalAlignment="Center" Padding="5,0,5,0" Click="btnClear_Click"/>
+                <Button Name="btnOpen" Content="Open" HorizontalAlignment="Center" Padding="5,0,5,0" Click="btnOpen_Click"/>
+            </StackPanel>
+            <TextBox Text="{Binding Msg}" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+            
+        </StackPanel>
+    </Grid>
+</Window>
